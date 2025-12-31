@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Todo from "./Todo";
+import { RouterProvider } from "react-router-dom";
+import rounter from "./routes/index.jsx";
 
 const App = () => {
-  return <Todo />;
+  return <RouterProvider router={rounter} />;
 };
 export default App;
