@@ -2,10 +2,19 @@ import React, { useState } from "react";
 
 const Todo = () => {
   const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState({ message: "", done: false });
+  const [tasks, setTasks] = useState([]);
+
   const addTask = () => {
-    setTasks([...tasks, { Text: task, isDone: false }]);
-    setTask("");
+    if (task !== "") {
+      setTasks([...tasks, { text: task, isDone: false }]);
+      setTask("");
+    }
+  };
+
+  const markDone = (index) => {
+    const newTasks = [...tasks];
+    newTasks[index].isDone = !newTasks[index].isDone;
+    setTasks(newTasks);
   };
 
   return (
@@ -14,27 +23,38 @@ const Todo = () => {
       <input
         type="text"
         placeholder="Enter Task"
+        value={task}
         onChange={(e) => setTask(e.target.value)}
       />
-      <div className="list">
-        <table>
+      <button onClick={addTask}>+Add</button>
+
+      <div className="list" style={{ marginTop: "20px" }}>
+        <table
+          border="1"
+          style={{ borderCollapse: "collapse", padding: "5px" }}
+        >
           <thead>
-            <th>Task</th>
-            <th>Done</th>
+            <tr>
+              <th>Task</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
           </thead>
           <tbody>
             {tasks.map((t, i) => (
-              <tr>
-                <td>{Text.message}</td>;
+              <tr key={i}>
+                <td>{t.text}</td>
+                <td>{t.isDone ? "Completed" : "Pending"}</td>
                 <td>
-                  <button onClick={() => markDone(i)}>{t.done}</button>
+                  <button style={{ margin: "1vh" }} onClick={() => markDone(i)}>
+                    {t.isDone ? "Undo" : "Mark Done"}
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <button onClick={addTask}>+Add</button>
     </div>
   );
 };

@@ -1,29 +1,25 @@
-/* 1. Basic formatting for the whole box */
 .login-form {
-  width: 300px; /* Fixed width */
+  width: 300px;
   border: 2px solid black;
   padding: 20px;
-  margin: 50px auto; /* "auto" centers it left-to-right */
-  text-align: center; /* Centers text and inputs */
-  background-color: #eee; /* Light gray background */
+  margin: 50px auto;
+  text-align: center;
+  background-color: #eee;
 }
 
-/* 2. Make the inputs look consistent */
 input {
   padding: 5px;
-  margin: 10px 0; /* Top and bottom spacing */
-  width: 80%; /* Takes up most of the box */
+  margin: 10px 0;
+  width: 80%;
 }
 
-/* 3. Make the labels bold */
 label {
   font-weight: bold;
-  display: block; /* Puts label on its own line */
-  text-align: left; /* Align labels to left */
-  margin-left: 10%; /* Match input alignment */
+  display: block;
+  text-align: left;
+  margin-left: 10%;
 }
 
-/* 4. Basic Button */
 .button {
   padding: 10px 20px;
   background-color: black;
